@@ -1,0 +1,52 @@
+{
+  "name": "@jackerhack/quartz5-plugin-readme-as-index",
+  "version": "1.0.0",
+  "description": "Quartz v5 transformer that treats a folder's README as its index: rewrites <folder>/readme slugs to <folder>/index unless a sibling index already exists.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Kiran Jonnalagadda",
+  "homepage": "https://github.com/jace/quartz5-plugin-readme-as-index#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jace/quartz5-plugin-readme-as-index.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jace/quartz5-plugin-readme-as-index/issues"
+  },
+  "keywords": [
+    "quartz",
+    "quartz-plugin",
+    "quartz-community",
+    "readme",
+    "index",
+    "folder",
+    "obsidian"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "quartz": {
+    "name": "readme-as-index",
+    "displayName": "README as Folder Index",
+    "category": "transformer",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "requiresInstall": false,
+    "dependencies": [],
+    "defaultOrder": 1,
+    "defaultEnabled": true
+  }
+}

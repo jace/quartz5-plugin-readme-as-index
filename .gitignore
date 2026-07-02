@@ -1,0 +1,6 @@
+node_modules
+*.log
+.DS_Store
+# NOTE: dist/ is intentionally committed. Quartz installs this plugin by
+# cloning the repo and imports dist/index.js directly; there is no build step
+# for git/local plugin sources, so the prebuilt output must be tracked.
