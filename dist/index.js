@@ -57,7 +57,28 @@ export const ReadmeAsIndex = (userOpts) => {
             const slug = file.data.slug
             if (!slug) return
             const mapped = remap.get(slug)
-            if (mapped) file.data.slug = mapped
+            if (mapped) {
+              file.data.slug = mapped
+              // Mark so the html phase can normalise the title like index.md.
+              file.data.readmeAsIndex = true
+            }
+          }
+        },
+      ]
+    },
+    htmlPlugins(_ctx) {
+      return [
+        () => {
+          return (_tree, file) => {
+            // Title only: make a remapped README behave like index.md.
+            // note-properties has already set frontmatter.title (to the stem when
+            // none was given), so if the title is still the README's stem, defer
+            // to folder-page by marking it "index"; an explicit title is kept.
+            if (!file.data.readmeAsIndex) return
+            const frontmatter = file.data.frontmatter
+            if (frontmatter && frontmatter.title === file.stem) {
+              frontmatter.title = "index"
+            }
           }
         },
       ]

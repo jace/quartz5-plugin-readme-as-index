@@ -1,6 +1,6 @@
 {
   "name": "@jackerhack/quartz5-plugin-readme-as-index",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Quartz v5 transformer that treats a folder's README as its index: rewrites <folder>/readme slugs to <folder>/index unless a sibling index already exists.",
   "type": "module",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "name": "readme-as-index",
     "displayName": "README as Folder Index",
     "category": "transformer",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "quartzVersion": ">=5.0.0",
     "requiresInstall": false,
     "dependencies": [],

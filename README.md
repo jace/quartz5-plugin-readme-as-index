@@ -1,23 +1,34 @@
 # quartz5-plugin-readme-as-index
 
-A [Quartz v5](https://quartz.jzhao.xyz/) transformer plugin that treats a
-folder's **`README.md`** as its **index** page.
+A [Quartz v5](https://quartz.jzhao.xyz/) transformer that makes a folder's
+**`README.md`** behave exactly like an **`index.md`** would when that file is
+absent — nothing more.
 
 Keep folder landing notes named `README.md` (so GitHub, Obsidian, and friends
 render them as the folder's front page) and still get a proper folder page in
-Quartz at `/<folder>/`.
+Quartz at `/<folder>/`, with the README's own frontmatter driving that page.
 
-## The rule
+## What it does
 
-One rule, case-insensitive: a file whose slug's last segment is `readme` gets
-its slug rewritten from `<folder>/readme` to `<folder>/index` — **but only if no
-other file already owns the slug `<folder>/index`**.
+1. **Slug** — a file whose slug's last segment is `readme` gets rewritten from
+   `<folder>/readme` to `<folder>/index`, **but only if no other file already
+   owns the slug `<folder>/index`**.
 
-| Folder contents                | Result                                              |
-| ------------------------------ | --------------------------------------------------- |
-| only `README.md`               | becomes the folder page at `/<folder>/`             |
-| both `index.md` and `README.md`| `index` wins; `README` stays at `/<folder>/readme`  |
-| site root `Index.md` + `README.md` | `index` already exists → root `README` left at `/readme` |
+   | Folder contents                    | Result                                              |
+   | ---------------------------------- | --------------------------------------------------- |
+   | only `README.md`                   | becomes the folder page at `/<folder>/`             |
+   | both `index.md` and `README.md`    | `index` wins; `README` stays at `/<folder>/readme`  |
+   | site root `Index.md` + `README.md` | `index` already exists → root `README` left at `/readme` |
+
+2. **Title** — a titleless README adopts the (properly-cased) folder name, just
+   like `index.md` does, instead of showing "README". An explicit `title:` in
+   the README frontmatter is preserved.
+
+Because the README simply *becomes* the folder's index, its frontmatter is the
+folder page's frontmatter. Anything Quartz does for an `index.md` — `publish` /
+`draft` filtering, `tags`, `description`, aliases, etc. — happens identically
+here through Quartz's own plugins. This plugin adds no publishing or pruning
+behaviour of its own.
 
 ## Install
 

@@ -5,5 +5,10 @@ export interface ReadmeAsIndexOptions {
   readmeSlug?: string
 }
 
+/**
+ * Transformer: rewrites `<folder>/readme` slugs to `<folder>/index` (unless a
+ * sibling index already exists) and makes a titleless README adopt the folder
+ * name, exactly like index.md.
+ */
 export declare const ReadmeAsIndex: QuartzTransformerPlugin<Partial<ReadmeAsIndexOptions>>
 export default ReadmeAsIndex
